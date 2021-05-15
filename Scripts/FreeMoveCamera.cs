@@ -37,10 +37,10 @@ namespace Game
 		private bool canPanPivot;
 		private bool canMoveFaster;
 
-		private Transform homeTr;   // the focus when "Home" key is rpessed. 0x0x0 point in editor but activer character in play mode
-		private Transform focusTr;  // last focused object
-		private Vector3 camPivot;	// pivot/position that camera rotates around
-		private float camDistance;  // distance from focised object
+		private Transform homeTr;
+		private Transform focusTr;
+		private Vector3 camPivot;
+		private float camDistance;
 
 		#endregion
 		// ----------------------------------------------------------------------------------------------------------------
