@@ -5,11 +5,12 @@ A repo where I'll be placing various camera controller scripts. These will proba
 ## FreeMoveCamera.cs 
 
 A Unity scene editor like camera. 
-WASD movement (holding the RightMouseButton).
-MiddelMouse or Ctrl+LeftMouse to pan.
-Alt+LeftMouse to rotate around pivot point. This pivor could be the position of a focused transform.
-ScrollWheel to zoom in/out.
-Method to focus on a transform (like the F key in Unity).
+
+* WASD movement (holding the RightMouseButton).
+* MiddelMouse or Ctrl+LeftMouse to pan.
+* Alt+LeftMouse to rotate around pivot point. This pivor could be the position of a focused transform.
+* ScrollWheel to zoom in/out.
+* Method to focus on a transform (like the F key in Unity).
 
 ![Image of FreeMoveCamera](/Images/FreeMoveCam.webp)
 
