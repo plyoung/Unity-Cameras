@@ -19,7 +19,7 @@ A Unity scene editor like camera.
 View world/action from top at some angle.
 
 * Frteely move camera (with or without holding a button)
-* Pane up/down/left/right (can disable by not binding related input)
+* Pan up/down/left/right (can disable by not binding related input)
 * Rotate and Tilt (can disable these and limit tilt's min/max)
 * Zoom
 * Focus on object
