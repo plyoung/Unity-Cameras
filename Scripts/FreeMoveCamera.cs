@@ -20,7 +20,7 @@ namespace Game
 		[SerializeField] private InputActionReference inputMoveAxis;
 		[SerializeField] private InputActionReference inputLookAxis;
 		[SerializeField] private InputActionReference inputZoomAxis;
-		[SerializeField] private InputActionReference inputWasdMoveButton;
+		[SerializeField] private InputActionReference inputMoveButton;
 		[SerializeField] private InputActionReference inputPanningButton;
 		[SerializeField] private InputActionReference inputRotateButton;
 		[SerializeField] private InputActionReference inputMoveFasterButton;
@@ -32,9 +32,9 @@ namespace Game
 		private Camera cam;
 		private Transform tr;
 
-		private bool canRotateAroundPivot;
-		private bool canWASDMove;
-		private bool canPanPivot;
+		private bool canRotate;
+		private bool canMove;
+		private bool canPan;
 		private bool canMoveFaster;
 
 		private Transform homeTr;
@@ -74,8 +74,17 @@ namespace Game
 
 			var dt = Time.deltaTime;
 
-			// * Rotate around pivot (Alt+LeftMouse)
-			if (canRotateAroundPivot)
+			if (canPan)
+			{
+				// NOTE: improve this so that pan speed is such that focused object stay under mouse cursor
+				var v = inputLookAxis.action.ReadValue<Vector2>() * dt * 3f;
+				camPivot += (tr.right * -v.x) + (tr.up * -v.y);
+
+				UpdateCameraPosition();
+				return; // do not rotate or move when panning
+			}
+
+			if (canRotate)
 			{
 				var v = inputLookAxis.action.ReadValue<Vector2>();
 				var r = v * dt * rotateSpeed;
@@ -86,18 +95,7 @@ namespace Game
 				UpdateCameraPosition();
 			}
 
-			// * Panning (MiddleMouse or Ctrl+LeftMouse)
-			if (canPanPivot)
-			{
-				// NOTE: improve this so that pan speed is such that focused object stay under mouse cursor
-				var v = inputLookAxis.action.ReadValue<Vector2>() * dt * 3f;
-				camPivot += (tr.right * -v.x) + (tr.up * -v.y);
-
-				UpdateCameraPosition();
-			}
-
-			// * WASD movement (RightMouse)
-			if (canWASDMove)
+			if (canMove)
 			{
 				// update rotation
 				var v = inputLookAxis.action.ReadValue<Vector2>();
@@ -192,8 +190,8 @@ namespace Game
 		{
 			inputZoomAxis.action.started -= OnZoom;
 			inputZoomAxis.action.canceled -= OnZoom;
-			inputWasdMoveButton.action.started -= OnCamWASDMove;
-			inputWasdMoveButton.action.canceled -= OnCamWASDMove;
+			inputMoveButton.action.started -= OnCamMove;
+			inputMoveButton.action.canceled -= OnCamMove;
 			inputPanningButton.action.started -= OnCamPanning;
 			inputPanningButton.action.canceled -= OnCamPanning;
 			inputRotateButton.action.started -= OnCamRotate;
@@ -205,8 +203,8 @@ namespace Game
 			{
 				inputZoomAxis.action.started += OnZoom;
 				inputZoomAxis.action.canceled += OnZoom;
-				inputWasdMoveButton.action.started += OnCamWASDMove;
-				inputWasdMoveButton.action.canceled += OnCamWASDMove;
+				inputMoveButton.action.started += OnCamMove;
+				inputMoveButton.action.canceled += OnCamMove;
 				inputPanningButton.action.started += OnCamPanning;
 				inputPanningButton.action.canceled += OnCamPanning;
 				inputRotateButton.action.started += OnCamRotate;
@@ -217,7 +215,7 @@ namespace Game
 				inputMoveAxis.action.Enable();
 				inputLookAxis.action.Enable();
 				inputZoomAxis.action.Enable();
-				inputWasdMoveButton.action.Enable();
+				inputMoveButton.action.Enable();
 				inputPanningButton.action.Enable();
 				inputRotateButton.action.Enable();
 				inputMoveFasterButton.action.Enable();
@@ -227,14 +225,14 @@ namespace Game
 				inputMoveAxis.action.Disable();
 				inputLookAxis.action.Disable();
 				inputZoomAxis.action.Disable();
-				inputWasdMoveButton.action.Disable();
+				inputMoveButton.action.Disable();
 				inputPanningButton.action.Disable();
 				inputRotateButton.action.Disable();
 				inputMoveFasterButton.action.Disable();
 			}
 		}
 
-		void OnZoom(InputAction.CallbackContext context)
+		private void OnZoom(InputAction.CallbackContext context)
 		{
 			if (context.started)
 			{
@@ -254,25 +252,25 @@ namespace Game
 			}
 		}
 
-		void OnCamWASDMove(InputAction.CallbackContext context)
+		private void OnCamMove(InputAction.CallbackContext context)
 		{
-			if (context.started) canWASDMove = true;
-			else if (context.canceled) canWASDMove = false;
+			if (context.started) canMove = true;
+			else if (context.canceled) canMove = false;
 		}
 
-		void OnCamPanning(InputAction.CallbackContext context)
+		private void OnCamPanning(InputAction.CallbackContext context)
 		{
-			if (context.started) canPanPivot = true;
-			else if (context.canceled) canPanPivot = false;
+			if (context.started) canPan = true;
+			else if (context.canceled) canPan = false;
 		}
 
-		void OnCamRotate(InputAction.CallbackContext context)
+		private void OnCamRotate(InputAction.CallbackContext context)
 		{
-			if (context.started) canRotateAroundPivot = true;
-			else if (context.canceled) canRotateAroundPivot = false;
+			if (context.started) canRotate = true;
+			else if (context.canceled) canRotate = false;
 		}
 
-		void OnMoveFaster(InputAction.CallbackContext context)
+		private void OnMoveFaster(InputAction.CallbackContext context)
 		{
 			if (context.started) canMoveFaster = true;
 			else if (context.canceled) canMoveFaster = false;
