@@ -1,4 +1,4 @@
-# Unity-Cameras
+# Unity Cameras
 
 A repo where I'll be placing various camera controller scripts. These will probably all use the new input system but it should be easy enough to change the code to work with whatever you use for input.
 
@@ -11,6 +11,6 @@ Alt+LeftMouse to rotate around pivot point. This pivor could be the position of 
 ScrollWheel to zoom in/out.
 Method to focus on a transform (like the F key in Unity).
 
-
+![Image of FreeMoveCamera](/Images/FreeMoveCam.webp)
 
 
