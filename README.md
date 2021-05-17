@@ -38,6 +38,7 @@ View world/action from top at some angle. This one has smoothing for when you fo
 * Zoom
 * Focus on object
 * Fast move or zoom (holding Shift button for example)
+* Follow an object
 
 ![Image of FreeMoveCamera](/Images/TopDownCam2.webp)
 
