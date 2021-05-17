@@ -11,21 +11,34 @@ A Unity scene editor like camera.
 * Alt+LeftMouse to rotate around pivot point. This pivot could be the position of a focused transform.
 * ScrollWheel to zoom in/out.
 * Method to focus on a transform (like the F key in Unity).
+* Fast move (holding Shift button for example)
 
 ![Image of FreeMoveCamera](/Images/FreeMoveCam.webp)
 
-## TopDownCamera.cs
+## TopDownCamera.cs (Simpler)
 
-View world/action from top at some angle.
+View world/action from top at some angle. This is a simpler version of the TopDownCamera. See the non "_simpler" one for more.
 
-* Frteely move camera (with or without holding a button)
+* Freely move camera (with or without holding a button)
 * Pane up/down/left/right (can disable by not binding related input)
 * Rotate and Tilt (can disable these and limit tilt's min/max)
 * Zoom
 * Focus on object
-
-TODO: Follow a transform.
+* fast move (holding Shift button for example)
 
 ![Image of FreeMoveCamera](/Images/TopDownCam.webp)
+
+## TopDownCamera.cs
+
+View world/action from top at some angle. This one has smoothing for when you focus on an object or adjust the zoom level.
+
+* Freely move camera (with or without holding a button)
+* Pane up/down/left/right (can disable by not binding related input)
+* Rotate and Tilt (can disable these and limit tilt's min/max)
+* Zoom
+* Focus on object
+* Fast move or zoom (holding Shift button for example)
+
+![Image of FreeMoveCamera](/Images/TopDownCam2.webp)
 
 
