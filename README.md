@@ -20,7 +20,7 @@ A Unity scene editor like camera.
 View world/action from top at some angle. This is a simpler version of the TopDownCamera. See the non "_simpler" one for more.
 
 * Freely move camera (with or without holding a button)
-* Pane up/down/left/right (can disable by not binding related input)
+* Pan up/down/left/right (can disable by not binding related input)
 * Rotate and Tilt (can disable these and limit tilt's min/max)
 * Zoom
 * Focus on object
@@ -33,7 +33,7 @@ View world/action from top at some angle. This is a simpler version of the TopDo
 View world/action from top at some angle. This one has smoothing for when you focus on an object or adjust the zoom level.
 
 * Freely move camera (with or without holding a button)
-* Pane up/down/left/right (can disable by not binding related input)
+* Pan up/down/left/right (can disable by not binding related input)
 * Rotate and Tilt (can disable these and limit tilt's min/max)
 * Zoom
 * Focus on object
