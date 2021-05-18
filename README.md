@@ -26,7 +26,7 @@ View world/action from top at some angle. This is a simpler version of the TopDo
 * Focus on object
 * fast move (holding Shift button for example)
 
-![Image of FreeMoveCamera](/Images/TopDownCam.webp)
+![Image of TopDownCamera](/Images/TopDownCam.webp)
 
 ## TopDownCamera.cs
 
@@ -40,6 +40,6 @@ View world/action from top at some angle. This one has smoothing for when you fo
 * Fast move or zoom (holding Shift button for example)
 * Follow an object
 
-![Image of FreeMoveCamera](/Images/TopDownCam2.webp)
+![Image of TopDownCamera](/Images/TopDownCam2.webp)
 
 
